@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Yussuf - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0a0a1a;
+            color: #fff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* ===== LIVE ASTRONAUT WALLPAPER BACKGROUND ===== */
+        .live-wallpaper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 25%, #16213e 50%, #0f3460 75%, #1a0a2e 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Astronauts */
+        .astronaut {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.12;
+            animation: floatDown linear infinite;
+            pointer-events: none;
+        }
+
+        .astronaut img {
+            width: 70px;
+            filter: drop-shadow(0 0 20px rgba(100, 200, 255, 0.5));
+        }
+
+        .astronaut:nth-child(1) { left: 5%; animation-duration: 25s; animation-delay: 0s; }
+        .astronaut:nth-child(2) { left: 20%; animation-duration: 30s; animation-delay: 5s; }
+        .astronaut:nth-child(3) { left: 40%; animation-duration: 22s; animation-delay: 2s; }
+        .astronaut:nth-child(4) { left: 60%; animation-duration: 28s; animation-delay: 8s; }
+        .astronaut:nth-child(5) { left: 75%; animation-duration: 24s; animation-delay: 4s; }
+        .astronaut:nth-child(6) { left: 90%; animation-duration: 26s; animation-delay: 6s; }
+        .astronaut:nth-child(7) { left: 15%; animation-duration: 32s; animation-delay: 10s; }
+        .astronaut:nth-child(8) { left: 50%; animation-duration: 20s; animation-delay: 12s; }
+
+        @keyframes floatDown {
+            0% { transform: translateY(-150px) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.18; }
+            90% { opacity: 0.18; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* ===== RONALDO 2008 HERO SECTION ===== */
+        .hero {
+            position: relative;
+            height: 75vh;
+            min-height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://wallpapercave.com/wp/wp10932947.jpg') center top/cover no-repeat;
+            filter: blur(2px) brightness(0.4);
+            transform: scale(1.1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10,10,26,0.3), rgba(10,10,26,0.85));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7, #ff006e, #ffbe0b);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientText 4s ease infinite;
+            text-shadow: 0 0 40px rgba(0,212,255,0.3);
+            letter-spacing: 3px;
+        }
+
+        @keyframes gradientText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: #a0a0c0;
+            margin-top: 1rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .hero .school-badge {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.6rem 2rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            font-size: 0.95rem;
+            color: #00d4ff;
+        }
+
+        /* ===== CONTACT BAR ===== */
+        .contact-bar {
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 1rem 2rem;
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            color: #a0a0c0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .contact-item:hover {
+            color: #00d4ff;
+            background: rgba(0,212,255,0.1);
+            border-color: rgba(0,212,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+        }
+
+        .contact-item.whatsapp i { color: #25d366; }
+        .contact-item.instagram i { color: #e4405f; }
+        .contact-item.email i { color: #ea4335; }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10,10,26,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #a0a0c0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #00d4ff, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #ff006e);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== INFO CARDS ===== */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7, #ff006e);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(0,212,255,0.3);
+            box-shadow: 0 20px 60px rgba(0,212,255,0.15), 0 0 100px rgba(123,47,247,0.1);
+        }
+
+        .info-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .info-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: iconPulse 3s ease infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .info-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .info-card p {
+            color: #a0a0c0;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .info-card .btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.7rem 1.8rem;
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .info-card .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,212,255,0.4);
+        }
+
+        /* ===== MY STORY SECTION ===== */
+        .story-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .story-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 30px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,0,110,0.05), rgba(0,212,255,0.05));
+            z-index: 0;
+        }
+
+        .story-image {
+            flex: 0 0 300px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .story-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
+        }
+
+        .story-image:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 30px 80px rgba(255,0,110,0.3);
+        }
+
+        .story-content {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .story-content h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ff006e, #ffbe0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .story-content .quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #c0c0d0;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            border-left: 3px solid #ff006e;
+            padding-left: 1.5rem;
+        }
+
+        .story-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #ff006e, #ffbe0b);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .story-btn:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,0,110,0.4);
+        }
+
+        @media (max-width: 768px) {
+            .story-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .story-image {
+                flex: 0 0 auto;
+                max-width: 250px;
+            }
+        }
+
+        /* ===== GAMES SECTION WITH REAL IMAGES ===== */
+        .games-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .game-card {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            height: 400px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+
+        .game-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+        }
+
+        .game-card-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s ease;
+        }
+
+        .game-card:hover .game-card-bg {
+            transform: scale(1.1);
+        }
+
+        .game-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
+        }
+
+        .game-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .game-card p {
+            color: #c0c0d0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .game-card .play-btn {
+            display: inline-block;
+            margin-top: 1.2rem;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #ff006e, #ffbe0b);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .game-card .play-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255,0,110,0.4);
+        }
+
+        /* ===== LIVERPOOL SECTION ===== */
+        .liverpool-section {
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .liverpool-logo {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 2rem;
+            position: relative;
+            animation: logoFloat 4s ease-in-out infinite;
+        }
+
+        .liverpool-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 30px rgba(200, 16, 46, 0.5));
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .liverpool-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(200,16,46,0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        .liverpool-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            color: #c8102e;
+            text-shadow: 0 0 20px rgba(200,16,46,0.5);
+        }
+
+        .liverpool-motto {
+            color: #00b2a9;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            letter-spacing: 4px;
+        }
+
+        /* ===== AI ASSISTANT ===== */
+        .ai-section {
+            background: rgba(255,255,255,0.02);
+            border-radius: 30px;
+            padding: 3rem;
+            margin: 3rem auto;
+            max-width: 900px;
+            border: 1px solid rgba(0,212,255,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,212,255,0.05) 0%, transparent 50%);
+            animation: aiGlow 8s linear infinite;
+        }
+
+        @keyframes aiGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .ai-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ai-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            animation: avatarPulse 2s ease infinite;
+            box-shadow: 0 0 30px rgba(0,212,255,0.5);
+        }
+
+        @keyframes avatarPulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(0,212,255,0.5); }
+            50% { box-shadow: 0 0 50px rgba(0,212,255,0.8); }
+        }
+
+        .ai-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #00d4ff, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ai-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #00ff88;
+            font-size: 0.85rem;
+        }
+
+        .ai-status::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: statusBlink 2s ease infinite;
+        }
+
+        @keyframes statusBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .ai-chat {
+            position: relative;
+            z-index: 1;
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            padding: 1.5rem;
+            min-height: 200px;
+        }
+
+        .chat-messages {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+        }
+
+        .chat-message {
+            padding: 0.8rem 1.2rem;
+            border-radius: 15px;
+            margin-bottom: 0.8rem;
+            max-width: 80%;
+            animation: messageSlide 0.3s ease;
+        }
+
+        @keyframes messageSlide {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-message.ai {
+            background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(123,47,247,0.15));
+            border: 1px solid rgba(0,212,255,0.2);
+            margin-right: auto;
+        }
+
+        .chat-message.user {
+            background: linear-gradient(135deg, rgba(255,0,110,0.15), rgba(255,190,11,0.15));
+            border: 1px solid rgba(255,0,110,0.2);
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50px;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .chat-input:focus {
+            border-color: #00d4ff;
+            box-shadow: 0 0 20px rgba(0,212,255,0.2);
+        }
+
+        .chat-send {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chat-send:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,212,255,0.4);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: #606080;
+            font-size: 0.9rem;
+        }
+
+        footer .heart {
+            color: #ff006e;
+            animation: heartbeat 1.5s ease infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .info-grid { grid-template-columns: 1fr; }
+            .ai-header { flex-direction: column; text-align: center; }
+            .contact-container { gap: 1rem; }
+            .contact-item { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Live Astronaut Wallpaper Background -->
+    <div class="live-wallpaper"></div>
+    
+    <!-- Floating Astronauts -->
+    <div class="astronaut"><img src="https://img.freepik.com/free-vector/gradient-galaxy-background_52683-140344.jpg?semt=ais_hybrid&w=740&q=80" alt="astronaut"></div>
+    <div class="astronaut"><img src="https://img.freepik.com/free-vector/gradient-galaxy-background_52683-140335.jpg?semt=ais_hybrid&w=740&q=80" alt="astronaut"></div>
+    <div class="astronaut"><img src="https://img.freepik.com/free-vector/gradient-galaxy-background_52683-140344.jpg?semt=ais_hybrid&w=740&q=80" alt="astronaut"></div>
+    <div class="astronaut"><img src="https://img.freepik.com/free-vector/gradient-galaxy-background_52683-140335.jpg?semt=ais_hybrid&w=740&q=80" alt="astronaut"></div>
+    <div class="astronaut"><img src="https://img.freepik.com/free-vector/gradient-galaxy-background_52683-140344.jpg?semt=ais_hybrid&w=740&q=80" alt="astronaut"></div>
+    <div class="astronaut"><img src="https://img.freepik.com/free-vector/gradient-galaxy-background_52683-140335.jpg?semt=ais_hybrid&w=740&q=80" alt="astronaut"></div>
+    <div class="astronaut"><img src="https://img.freepik.com/free-vector/gradient-galaxy-background_52683-140344.jpg?semt=ais_hybrid&w=740&q=80" alt="astronaut"></div>
+    <div class="astronaut"><img src="https://img.freepik.com/free-vector/gradient-galaxy-background_52683-140335.jpg?semt=ais_hybrid&w=740&q=80" alt="astronaut"></div>
+
+    <!-- Stars -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Hero Section with Ronaldo 2008 Blur Wallpaper -->
+    <div class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>MOHAMED YUSSUF</h1>
+            <p class="subtitle">Developer | Student | Gamer | Future Doctor</p>
+            <div class="school-badge">
+                <i class="fas fa-graduation-cap"></i> Tumekuja Secondary School — Kariakoo, Zanzibar
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Bar -->
+    <div class="contact-bar">
+        <div class="contact-container">
+            <a href="https://wa.me/255673847155" target="_blank" class="contact-item whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span>0673 847 155</span>
+            </a>
+            <a href="https://instagram.com/itz._moud" target="_blank" class="contact-item instagram">
+                <i class="fab fa-instagram"></i>
+                <span>@itz._moud</span>
+            </a>
+            <a href="mailto:mudi.yussuf.com@gmail.com" class="contact-item email">
+                <i class="fas fa-envelope"></i>
+                <span>mudi.yussuf.com@gmail.com</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-text">MY</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#story">My Story</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#liverpool">Liverpool</a></li>
+                <li><a href="#ai">AI Assistant</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about" class="reveal">
+        <h2 class="section-title">About Mohamed</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="icon">👨‍💻</div>
+                <h3>Developer Profile</h3>
+                <p>Mohamed Yussuf is a passionate new developer who loves creating mobile games and exploring the world of code. His journey in programming is just beginning, but his enthusiasm is unmatched.</p>
+                <a href="#skills" class="btn">View Skills</a>
+            </div>
+            <div class="info-card">
+                <div class="icon">🎓</div>
+                <h3>Student Life</h3>
+                <p>A dedicated student at Tumekuja Secondary School in Kariakoo, Zanzibar. Mohamed balances his academic pursuits with his passion for technology and gaming.</p>
+                <a href="#education" class="btn">My School</a>
+            </div>
+            <div class="info-card">
+                <div class="icon">🩺</div>
+                <h3>Future Doctor</h3>
+                <p>While coding is his current passion, Mohamed's ultimate ambition is to become a doctor. He believes technology and medicine can change the world together.</p>
+                <a href="#" class="btn">My Ambition</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MY STORY SECTION -->
+    <section id="story" class="story-section reveal">
+        <div class="story-container">
+            <div class="story-image">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.ktyaa6w-Igz2G5XxtlsKgQAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Ronaldo Mind Your Business">
+            </div>
+            <div class="story-content">
+                <h2>MY STORY</h2>
+                <p class="quote">
+                    "You may know me, but you may not know my story... So mind your own business."
+                </p>
+                <p style="color: #a0a0c0; line-height: 1.8; margin-bottom: 2rem;">
+                    Every legend has a journey. Like Cristiano Ronaldo who rose from the streets of Madeira to become the greatest of all time, Mohamed Yussuf is writing his own story. From the classrooms of Tumekuja Secondary School to the world of code, gaming, and medicine — this is just the beginning. Focus on your own grind, let the results speak.
+                </p>
+                <button class="story-btn" onclick="alert('Stay tuned... The best is yet to come! 🔥')">
+                    <i class="fas fa-fire"></i> Mind Your Business
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="reveal">
+        <h2 class="section-title">Education</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="icon">🏫</div>
+                <h3>Tumekuja Secondary School</h3>
+                <p>Located in the heart of Kariakoo, Zanzibar. This is where Mohamed is building his academic foundation while pursuing his dreams in technology and medicine.</p>
+                <a href="https://www.google.com/maps/search/tumekuja+secondary+school+kariakoo+zanzibar" target="_blank" class="btn">
+                    <i class="fas fa-map-marker-alt"></i> Find on Map
+                </a>
+            </div>
+            <div class="info-card">
+                <div class="icon">📚</div>
+                <h3>Favorite Subjects</h3>
+                <p><strong>HTML & CSS:</strong> Building beautiful web experiences<br>
+                <strong>Biology:</strong> Understanding the science of life<br>
+                Both subjects fuel his dual passion for tech and medicine.</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="reveal">
+        <h2 class="section-title">Skills & Passions</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="icon">📱</div>
+                <h3>Mobile Game Development</h3>
+                <p>Mohamed excels at generating creative mobile games. His imagination brings unique gaming concepts to life, making him a promising game developer.</p>
+                <a href="#games" class="btn">See Games</a>
+            </div>
+            <div class="info-card">
+                <div class="icon">🎮</div>
+                <h3>Gaming Skills</h3>
+                <p>Not just a developer, but also a skilled gamer! Mohamed dominates in competitive gaming with quick reflexes and strategic thinking.</p>
+                <a href="#games" class="btn">My Favorites</a>
+            </div>
+            <div class="info-card">
+                <div class="icon">🌐</div>
+                <h3>Web Development</h3>
+                <p>With HTML and CSS as his favorite subjects, Mohamed crafts stunning websites with smooth animations and modern designs like this one!</p>
+                <a href="#" class="btn">My Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section with Real Images -->
+    <section id="games" class="reveal">
+        <h2 class="section-title">Favorite Games</h2>
+        <div class="games-showcase">
+            <div class="game-card">
+                <div class="game-card-bg" style="background-image: url('https://4kwallpapers.com/images/wallpapers/pubg-mobile-poster-2880x1800-20795.jpg');"></div>
+                <div class="game-card-overlay">
+                    <h3><i class="fas fa-crosshairs"></i> PUBG MOBILE</h3>
+                    <p>Battle Royale at its finest. Mohamed's tactical gameplay and survival skills make him a formidable opponent on the battlegrounds.</p>
+                    <a href="https://www.pubgmobile.com" target="_blank" class="play-btn">Play PUBG</a>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-card-bg" style="background-image: url('https://cf-images.ap-northeast-1.prod.boltdns.net/v1/static/5367332864001/1cc27018-efeb-4dd8-9e99-509e3b8f457b/140b8687-ed29-4fe8-b29a-d684d1eaebf8/1280x720/match/image.jpg');"></div>
+                <div class="game-card-overlay">
+                    <h3><i class="fas fa-futbol"></i> eFootball 2026</h3>
+                    <p>The ultimate football simulation. Mohamed combines his love for Liverpool with his gaming skills to dominate the virtual pitch.</p>
+                    <a href="https://www.konami.com/efootball" target="_blank" class="play-btn">Play eFootball</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Liverpool Section -->
+    <section id="liverpool" class="liverpool-section reveal">
+        <h2 class="section-title">Favorite Team</h2>
+        <div class="liverpool-logo">
+            <div class="liverpool-glow"></div>
+            <img src="https://upload.wikimedia.org/wikipedia/hif/b/bd/Liverpool_FC.png" alt="Liverpool FC Logo">
+        </div>
+        <div class="liverpool-text">LIVERPOOL FC</div>
+        <div class="liverpool-motto">YOU'LL NEVER WALK ALONE</div>
+        <br>
+        <a href="https://www.liverpoolfc.com" target="_blank" class="btn" style="background: linear-gradient(135deg, #c8102e, #00b2a9); padding: 1rem 2.5rem; font-size: 1rem;">
+            <i class="fas fa-external-link-alt"></i> Visit Official Site
+        </a>
+    </section>
+
+    <!-- AI Assistant Section -->
+    <section id="ai" class="reveal">
+        <h2 class="section-title">AI Assistant</h2>
+        <div class="ai-section">
+            <div class="ai-header">
+                <div class="ai-avatar">🤖</div>
+                <div>
+                    <div class="ai-name">Mohamed Yussuf AI</div>
+                    <div class="ai-status">Online — Professional Coding Assistant</div>
+                </div>
+            </div>
+            <div class="ai-chat">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="chat-message ai">
+                        <strong>MY AI:</strong> Hello! I'm Mohamed Yussuf's AI assistant. I'm a professional coder ready to help you with HTML, CSS, game development, and more! What would you like to know?
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Ask me anything about coding...">
+                    <button class="chat-send" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made with <span class="heart">❤</span> for Mohamed Yussuf | Tumekuja Secondary School | Kariakoo, Zanzibar</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">WhatsApp: 0673 847 155 | Instagram: @itz._moud | Email: mudi.yussuf.com@gmail.com</p>
+        <p style="margin-top: 0.3rem; font-size: 0.8rem;">© 2026 — Future Doctor & Developer</p>
+    </footer>
+
+    <script>
+        // Generate Stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.width = Math.random() * 3 + 'px';
+            star.style.height = star.style.width;
+            star.style.animationDelay = Math.random() * 5 + 's';
+            star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // AI Chat Functionality
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+
+        const aiResponses = {
+            'html': 'HTML (HyperText Markup Language) is the backbone of web pages. It uses tags like &lt;div&gt;, &lt;p&gt;, and &lt;h1&gt; to structure content. Want to learn more about semantic HTML5?',
+            'css': 'CSS (Cascading Style Sheets) makes websites beautiful! You can use gradients, animations, flexbox, and grid layouts. My favorite trick is using linear-gradient for stunning backgrounds!',
+            'game': 'Game development is amazing! For mobile games, you can use Unity, Godot, or even HTML5 Canvas with JavaScript. Mohamed loves creating games that people enjoy playing!',
+            'pubg': 'PUBG is an intense battle royale game! Pro tips: Always land in less crowded areas, master the recoil patterns, and use headphones to hear enemy footsteps. Good luck on the battlegrounds!',
+            'efootball': 'eFootball is all about skill moves and tactical play. Practice your through balls, learn skill moves like the elastico, and always watch your stamina bar!',
+            'liverpool': 'Liverpool FC — You\'ll Never Walk Alone! The Reds have won 19 league titles and 6 European Cups. Mohamed Salah, Van Dijk, and Trent Alexander-Arnold are absolute legends!',
+            'doctor': 'Becoming a doctor requires dedication! Focus on Biology and Chemistry. Medical school is challenging but incredibly rewarding. Mohamed\'s dream of healing others will come true!',
+            'biology': 'Biology is the study of life! From cells to ecosystems, it\'s fascinating. Key topics: genetics, human anatomy, microbiology, and ecology. Perfect for a future doctor!',
+            'hello': 'Hello there! 👋 I\'m Mohamed Yussuf\'s AI assistant. I\'m here to help with coding, gaming tips, or anything you want to know about Mohamed!',
+            'hi': 'Hi! Welcome to Mohamed Yussuf\'s portfolio. How can I assist you today?',
+            'who': 'I am the Mohamed Yussuf AI — a professional coding assistant built to represent Mohamed\'s passion for technology. I can help with HTML, CSS, game dev, and more!',
+            'school': 'Mohamed studies at Tumekuja Secondary School in Kariakoo, Zanzibar. It\'s a great school where he\'s building his future in both technology and medicine!',
+            'zanzibar': 'Zanzibar is a beautiful island off the coast of Tanzania, known for its stunning beaches, rich history, and spice trade. Kariakoo is a vibrant area in Zanzibar Town!',
+            'code': 'Coding is Mohamed\'s passion! He loves HTML, CSS, and creating mobile games. The best way to learn is by building projects — start small and keep practicing!',
+            'help': 'I can help you with: HTML/CSS tips, game development advice, PUBG/eFootball strategies, info about Liverpool FC, biology facts, or anything about Mohamed Yussuf!',
+            'contact': 'You can reach Mohamed via WhatsApp: 0673 847 155, Instagram: @itz._moud, or Email: mudi.yussuf.com@gmail.com. Don\'t hesitate to connect!',
+            'whatsapp': 'Mohamed\'s WhatsApp number is 0673 847 155. Feel free to message him for collaborations or just to chat about coding and gaming!',
+            'instagram': 'Follow Mohamed on Instagram @itz._moud for updates on his coding journey, gaming clips, and life in Zanzibar!',
+            'email': 'You can email Mohamed at mudi.yussuf.com@gmail.com for any inquiries about web development, game projects, or just to say hello!',
+            'story': 'Mohamed\'s story is just beginning. From Tumekuja Secondary School to the world of code and medicine — remember: You may know him, but you may not know his story. So mind your own business! 🔥',
+            'ronaldo': 'Cristiano Ronaldo is the GOAT! From Madeira to Manchester United to Real Madrid and beyond — his work ethic and mindset inspire Mohamed every single day. Siuuu! ⚽',
+            'business': 'Mind your own business! Focus on your grind, let your results speak. That\'s the Mohamed Yussuf mindset. 🔥'
+        };
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-message user';
+            userMsg.innerHTML = '<strong>You:</strong> ' + message;
+            chatMessages.appendChild(userMsg);
+            chatInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Generate AI response
+            setTimeout(() => {
+                const lowerMsg = message.toLowerCase();
+                let response = 'That\'s an interesting question! As Mohamed Yussuf\'s AI, I specialize in coding, gaming, and sharing info about Mohamed. Could you ask about HTML, CSS, PUBG, eFootball, Liverpool, Biology, or Mohamed himself?';
+                
+                for (const [key, value] of Object.entries(aiResponses)) {
+                    if (lowerMsg.includes(key)) {
+                        response = value;
+                        break;
+                    }
+                }
+
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'chat-message ai';
+                aiMsg.innerHTML = '<strong>MY AI:</strong> ' + response;
+                chatMessages.appendChild(aiMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 800);
+        }
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Parallax effect on hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroBg = document.querySelector('.hero-bg');
+            if (heroBg) {
+                heroBg.style.transform = `scale(1.1) translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
+</body>
+</html>'''
